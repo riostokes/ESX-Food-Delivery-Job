@@ -5,7 +5,7 @@ author 'Rio Stokes <riostokes@riostokes.com>'
 description 'Lightweight Food Delivery Job for ESX'
 
 shared_scripts {
-
+    '@es_extended/imports.lua'
 }
 
 client_scripts {
@@ -13,7 +13,7 @@ client_scripts {
 }
 
 server_scripts {
-
+    
 }
 
 
