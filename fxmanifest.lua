@@ -14,10 +14,12 @@ client_scripts {
     'client/peds.lua',
     'client/interactions.lua',
     'client/menus.lua',
+    'client/vehicles.lua'
 }
 
 server_scripts {
     'server/job.lua',
+    'server/vehicles.lua'
 }
 
 
