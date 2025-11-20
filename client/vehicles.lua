@@ -18,8 +18,8 @@ AddEventHandler('rs_fooddelivery:spawnDeliveryVehicle', function(vehicleModel, c
         )
 
         SetVehicleOnGroundProperly(vehicle)
-        ESX.ShowNotification("Successfully Rented Vehicle", "success", 3000, "Vehicle Notification")
+        ESX.ShowNotification("Successfully Rented Vehicle", "info", 3000, "Vehicle Notification")
     else
-        ESX.ShowNotification("You must be clocked in to rent a vehicle.", "error", 3000, "Vehicle Notification")
+        ESX.ShowNotification("You must be clocked in to rent a vehicle.", "info", 3000, "Vehicle Notification")
     end  
 end)

@@ -11,7 +11,7 @@ lib.registerContext({
         },
         {
             title = 'Rent Delivery Vehicle',
-            description = 'Rent a scooter or bike for deliveries.',
+            description = 'Rent a scooter or bike for deliveries. (£4000)',
             icon = 'fa-solid fa-motorcycle',
             iconColor = 'lightblue',
             serverEvent = 'rs_fooddelivery:rentDeliveryVehicle'
