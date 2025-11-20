@@ -6,16 +6,21 @@ description 'Lightweight Food Delivery Job for ESX'
 
 shared_scripts {
     '@es_extended/imports.lua',
+    '@ox_lib/init.lua',
     'config.lua'
 }
 
 client_scripts {
-    'client/peds.lua'
+    'client/peds.lua',
+    'client/interactions.lua',
+    'client/menus.lua',
 }
 
 server_scripts {
-    'server/'
+    'server/job.lua',
 }
 
 
-dependencies {}
+dependencies {
+    'ox_lib'
+}
