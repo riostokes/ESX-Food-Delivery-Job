@@ -14,7 +14,8 @@ client_scripts {
     'client/peds.lua',
     'client/interactions.lua',
     'client/menus.lua',
-    'client/vehicles.lua'
+    'client/vehicles.lua',
+    'client/job.lua'
 }
 
 server_scripts {
