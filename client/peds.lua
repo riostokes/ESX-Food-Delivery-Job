@@ -25,6 +25,40 @@ local function createDeliveryJobPed()
     return ped
 end
 
+function createDeliveryCustomerPedWithInteraction()
+    local allModels = Config.FoodDeliveryCustomerPed
+    local allDeliveryLocations = Config.FoodDeliveryCustomerLocations
+    local selectedModel = allModels[math.random(1, #allModels)]
+    local selectedDeliveryLocation = allDeliveryLocations[math.random(1, #allDeliveryLocations)]
+    local customerModel = selectedModel.model
+    local netId = nil
+
+    RequestModel(customerModel)
+    while not HasModelLoaded(customerModel) do
+        Wait(10)
+    end
+
+    local customer = CreatePed(
+        4,
+        customerModel,
+        selectedDeliveryLocation.coords.x,
+        selectedDeliveryLocation.coords.y,
+        selectedDeliveryLocation.coords.z,
+        selectedDeliveryLocation.heading,
+        true,
+        false
+    )
+
+    SetEntityInvincible(customer, true)
+    SetBlockingOfNonTemporaryEvents(customer, true)
+    FreezeEntityPosition(customer, true)
+
+    netId = NetworkGetNetworkIdFromEntity(customer)
+    createDeliveryCustomerInteraction(selectedDeliveryLocation)
+    
+    return netId
+end
+
 CreateThread(function()
     createDeliveryJobPed()
 end)

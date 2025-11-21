@@ -15,6 +15,13 @@ lib.registerContext({
             icon = 'fa-solid fa-motorcycle',
             iconColor = 'lightblue',
             serverEvent = 'rs_fooddelivery:rentDeliveryVehicle'
+        },
+        {
+            title = 'Request Delivery Route',
+            description = 'Get a new delivery route assigned to you.',
+            icon = 'fa-regular fa-map',
+            iconColor = 'green',
+            serverEvent = 'rs_fooddelivery:requestDeliveryRoute'
         }
     }
 })
