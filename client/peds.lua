@@ -55,6 +55,7 @@ function createDeliveryCustomerPedWithInteraction()
 
     netId = NetworkGetNetworkIdFromEntity(customer)
     createDeliveryCustomerInteraction(selectedDeliveryLocation)
+    SetNewWaypoint(selectedDeliveryLocation.coords.x,selectedDeliveryLocation.coords.y)
     
     return netId
 end
