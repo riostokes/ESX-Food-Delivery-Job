@@ -36,3 +36,24 @@ AddEventHandler('rs_fooddelivery:endDeliveryRoute', function()
     local entityId = NetworkGetEntityFromNetworkId(customerNetId)
     DeleteEntity(entityId)
 end)
+
+RegisterNetEvent('rs_fooddelivery:deleteDeliveryRoute')
+AddEventHandler('rs_fooddelivery:deleteDeliveryRoute', function()
+
+    ESX.ShowNotification("Canceled Delivery Route", "info", 3000, "Job Notification")
+
+    removeDeliveryInteraction()
+
+    if customerNetId then
+        local entityId = NetworkGetEntityFromNetworkId(customerNetId)
+        if DoesEntityExist(entityId) then
+            DeleteEntity(entityId)
+        end
+        customerNetId = nil
+    end
+end)
+
+RegisterNetEvent('rs_fooddelivery:noActiveRoute')
+AddEventHandler('rs_fooddelivery:noActiveRoute', function()
+    ESX.ShowNotification("You have no active delivery route", "info", 3000, "Job Notification")
+end)

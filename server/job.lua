@@ -60,3 +60,16 @@ AddEventHandler('rs_fooddelivery:deliveredFood', function()
     activeRoutes[src] = nil
     TriggerClientEvent('rs_fooddelivery:endDeliveryRoute', src)
 end)
+
+RegisterNetEvent('rs_fooddelivery:cancelDeliveryRoute')
+AddEventHandler('rs_fooddelivery:cancelDeliveryRoute', function()
+    local src = source
+    
+    if activeRoutes[src] == nil then
+        TriggerClientEvent('rs_fooddelivery:noActiveRoute', src)
+        return
+    end
+
+    activeRoutes[src] = nil
+    TriggerClientEvent('rs_fooddelivery:deleteDeliveryRoute', src)
+end)
