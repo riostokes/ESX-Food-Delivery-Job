@@ -1,4 +1,6 @@
 ESX = exports["es_extended"]:getSharedObject()
+local activeRoutes = {}
+
 
 RegisterNetEvent('rs_fooddelivery:clockInOrOut')
 AddEventHandler('rs_fooddelivery:clockInOrOut', function()
@@ -26,18 +28,25 @@ RegisterNetEvent('rs_fooddelivery:requestDeliveryRoute')
 AddEventHandler('rs_fooddelivery:requestDeliveryRoute', function()
     local src = source
     local xPlayer = ESX.GetPlayerFromId(src)
-    local isClockedIn = false
 
-    if xPlayer then
-        local currentPlayerJob = xPlayer.getJob().name
+    if not xPlayer then return end
 
-        if currentPlayerJob == 'fooddelivery' then
-            isClockedIn = true
-        end
+    local job = xPlayer.getJob().name
+    local isClockedIn = job == 'fooddelivery'
+
+    if activeRoutes[src] then
+        TriggerClientEvent('esx:showNotification', src, "You must finish your current delivery first.", "info", 3000)
+        return
     end
-    TriggerClientEvent('rs_fooddelivery:startDeliveryRoute', src, isClockedIn)
-end)
 
+    if not isClockedIn then
+        TriggerClientEvent('rs_fooddelivery:startDeliveryRoute', src, false)
+        return
+    end
+
+    activeRoutes[src] = true
+    TriggerClientEvent('rs_fooddelivery:startDeliveryRoute', src, true)
+end)
 
 RegisterNetEvent('rs_fooddelivery:deliveredFood')
 AddEventHandler('rs_fooddelivery:deliveredFood', function()
@@ -48,5 +57,6 @@ AddEventHandler('rs_fooddelivery:deliveredFood', function()
         xPlayer.addMoney(4000, "Food Delivered")
     end
 
+    activeRoutes[src] = nil
     TriggerClientEvent('rs_fooddelivery:endDeliveryRoute', src)
 end)

@@ -12,13 +12,20 @@ end)
 
 RegisterNetEvent('rs_fooddelivery:startDeliveryRoute')
 AddEventHandler('rs_fooddelivery:startDeliveryRoute', function(isClockedIn)
-    if isClockedIn then
-        ESX.ShowNotification("Delivery Started — get there quickly while it’s hot!", "info", 3000, "Job Notification")
-        customerNetId = createDeliveryCustomerPedWithInteraction()
-
-    else
+    if not isClockedIn then
         ESX.ShowNotification("You are not clocked in. Clock in to request a delivery.", "info", 3000, "Job Notification")
+        return
     end
+
+    local ped = NetworkGetEntityFromNetworkId(customerNetId)
+    if DoesEntityExist(ped) then
+        ESX.ShowNotification("You already have an active delivery!", "info", 3000, "Job Notification")
+        return
+    end
+
+    ESX.ShowNotification("Delivery Started — get there quickly while it’s hot!", "info", 3000, "Job Notification")
+
+    customerNetId = createDeliveryCustomerPedWithInteraction()
 end)
 
 
