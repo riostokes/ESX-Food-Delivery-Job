@@ -61,5 +61,8 @@ function createDeliveryCustomerPedWithInteraction()
 end
 
 CreateThread(function()
+    while not ESX.IsPlayerLoaded() do
+        Wait(500)
+    end
     createDeliveryJobPed()
 end)
