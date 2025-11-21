@@ -3,7 +3,7 @@ games { 'gta5' }
 
 author 'Rio Stokes <riostokes@riostokes.com>'
 description 'Lightweight Food Delivery Job for ESX'
-version '1.0.1'
+version '1.0.2'
 
 shared_scripts {
     '@es_extended/imports.lua',
