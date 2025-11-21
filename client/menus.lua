@@ -19,9 +19,16 @@ lib.registerContext({
         {
             title = 'Request Delivery Route',
             description = 'Get a new delivery route assigned to you.',
-            icon = 'fa-regular fa-map',
+            icon = 'fa-solid fa-map-location-dot',
             iconColor = 'green',
             serverEvent = 'rs_fooddelivery:requestDeliveryRoute'
+        },
+        {
+            title = 'Cancel Delivery Route',
+            description = 'Cancel your current delivery route.',
+            icon = 'fa-regular fa-circle-xmark',
+            iconColor = 'red',
+            serverEvent = 'rs_fooddelivery:cancelDeliveryRoute'
         }
     }
 })
